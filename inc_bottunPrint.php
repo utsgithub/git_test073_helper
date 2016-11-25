@@ -1,0 +1,1 @@
+<a href="http://localhost/git_test073/index.php/printpage/output?page=category" class="btn btn-warning">Print</a>
