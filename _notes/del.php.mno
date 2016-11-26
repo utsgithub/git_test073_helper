@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_rs" value="name:ID;datatype:int,name:categoryID;datatype:int,name:subTitle;datatype:string,name:subject;datatype:string,name:tempCate;datatype:int,name:sortNum;datatype:int,name:times;datatype:int,name:sen;datatype:string,name:image;datatype:string,name:hint;datatype:string,name:sort;datatype:string" />
-	<infoitem key="UD_rsCate" value="name:ID;datatype:int,name:categoryID;datatype:int,name:subTitle;datatype:string,name:subject;datatype:string,name:tempCate;datatype:int,name:sortNum;datatype:int,name:times;datatype:int,name:sen;datatype:string,name:image;datatype:string,name:hint;datatype:string,name:sort;datatype:string" />
-</info>

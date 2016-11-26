@@ -8,6 +8,16 @@
     </RootNamespace>
     <OutputType>Library</OutputType>
     <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <SaveServerSettingsInUserFile>false</SaveServerSettingsInUserFile>
+    <Runtime>PHP</Runtime>
+    <RuntimeVersion>5.6</RuntimeVersion>
+    <EnvName>Custom</EnvName>
+    <PHPDevHostName>localhost</PHPDevHostName>
+    <PHPDevAutoPort>true</PHPDevAutoPort>
+    <CustomServerUrl>http://localhost:8080/git_test073_helper/</CustomServerUrl>
+    <CustomXdebugPort>8080</CustomXdebugPort>
+    <PublishEvent>None</PublishEvent>
+    <DebugMappingMethod>Automatic</DebugMappingMethod>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <IncludeDebugInformation>true</IncludeDebugInformation>
@@ -33,13 +43,17 @@
     <Compile Include="assets\bootstrap\js\bootstrap.min.js" />
     <Compile Include="assets\jquery.min.js" />
     <Compile Include="assets\oocss.css" />
+    <Compile Include="cateAudoInsert.php" />
+    <Compile Include="cateAutoNum.php" />
     <Compile Include="cateInsert.php" />
     <Compile Include="Connections\conn.php" />
     <Compile Include="inc\inc_cateInsert_insertSQL.php" />
-    <Compile Include="inc\inc_head.asp" />
     <Compile Include="inc\inc_head.php" />
-    <Compile Include="inc\inc_nav.asp" />
     <Compile Include="inc\inc_nav.php" />
+    <Compile Include="inc\inc_newsList_table.php" />
+    <Compile Include="jpn_search.php" />
+    <Compile Include="jpn_sen_list.php" />
+    <Compile Include="jpn_word_list.php" />
     <Compile Include="json.php" />
     <Compile Include="SpryAssets\SpryData.js" />
     <Compile Include="SpryAssets\SpryData1.js" />

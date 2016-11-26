@@ -5,13 +5,17 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                    <a class="navbar-brand" href="#">Leeke</a>
+                    <a class="navbar-brand" href="http://localhost:8080/git_test073_helper/">Leeke</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="cateList.php">Index</a></li>
+                        <li><a href="json.php" target="_blank">JSON</a></li>
+                        <li><a href="jpn_word_list.php" target="_blank">JPN Word</a></li>
+                        <li><a href="jpn_sen_list.php" target="_blank">JPN Sen</a></li>
+                        <li><a href="jpn_search.php" target="_blank">JPN Search</a></li>
                         <li><a href="http://localhost/output/test/index.html" target="_blank">Test</a></li>
                         <li> <a href="http://getbootstrap.com/css" target="_blank">CSS</a> </li>
                         <li> <a href="http://getbootstrap.com/components" target="_blank">Components</a> </li>

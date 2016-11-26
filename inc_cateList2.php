@@ -17,7 +17,7 @@
         <td>{sortNum}</td>
         <td><ul class="list-inline mbn">
             <li spry:if="'{parentId}'!='0'"><a href="newsList.php?cid={ID}&pid={parentId}">{category}</a></li>
-            <li spry:if="'{parentId}'=='0'"><a href="?pid={ID}">{category}</a></li>
+            <li spry:if="'{parentId}'=='0'"><a href="?pid={ID}&title={category}">{category}</a></li>
           </ul></td>
         <td><ul class="list-inline mbn">
             <li spry:if="'{parentId}'=='0'"><a href="NewsAll.php?pid={ID}" target="_blank">List all News</a></li>
@@ -28,7 +28,7 @@
       </tr>
     </table>
   </div>
-  <a href="http://localhost/git_test073/index.php/pro2/sort?id=<?php echo $_GET['pid'] ?>" target="_blank" class="btn-primary btn">Sort</a>
+  <a href="" target="_blank" class="btn-primary btn">Sort</a>
   <div class="form-group" spry:region="dsNavLeft">
     <select spry:repeatchildren="dsNavLeft" class="form-control" name="pid">
       <option spry:if="'{ID}'=='<?php echo $pid ?>'" value="{dsNavLeft::ID}" selected>{dsNavLeft::category}</option>
@@ -36,7 +36,9 @@
     </select>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
-  <input type="hidden" name="id" value="<?php echo $_GET['pid']; ?>"/>
+  <input type="hidden" name="id" value=""/>
   <input type="hidden" name="act" value="copy"/>
   <a class="btn btn-success" href="cateInsert.php?pid=<?php echo $pid; ?>">Add New</a>
+  <a class="btn btn-success" target="_blank" href="cateAudoInsert.php?pid=<?php echo $pid; ?>&title=<?php echo $title; ?>">Auto Insert</a>
+  <a class="btn btn-success" target="_blank" href="cateAutoNum.php?pid=<?php echo $pid; ?>&title=<?php echo $title; ?>">Auto Num</a>
 </form>

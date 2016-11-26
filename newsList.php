@@ -23,35 +23,22 @@ var ds1 = new Spry.Data.HTMLDataSet("data_news.php?cid=<?php echo $_GET['cid']; 
 <?php include("inc/inc_nav.php"); ?>
 <div class="container"><!-- InstanceBeginEditable name="EditRegion1" -->
   <?php 
-$pid=$_GET['pid'];
-$cid=$_GET['cid'];
-?>
+  $pid=$_GET['pid'];
+  $cid=$_GET['cid'];
+  ?>
   <div class="col-xs-3">
     <?php require_once('inc_leftNav.php'); ?>
   </div>
   <div  class="col-xs-9">
     <div>
-      <form action="http://localhost/git_test073/index.php/pro/moveNews" method="post" role="form">
+      <form action="" method="post" role="form">
         <div spry:region="ds1">
-          <table class="table table-bordered table-condensed table-hover">
-            <tr>
-              <th spry:sort="ID">({ds1::ds_RowCount})</th>
-              <th spry:sort="subject">Question(Subject)</th>
-              <th spry:sort="subTitle">Answer(Subtitle)</th>
-              <th>Action</th>
-            </tr>
-            <tr spry:repeat="ds1">
-              <td><input type="checkbox" name="arr[]" value="{ds1::ID}"/></td>
-              <td>{subject}</td>
-              <?php $linkNewsEdit="newsEdit.php?id={ds1::ID}&cid={categoryId}&pid=$pid"?>
-              <td><a target="_blank" href="<?php $linkNewsEdit ?>">{subTitle}</a></td>
-              <td><a href="<?php echo $linkNewsEdit?>">Edit</a>&nbsp;|&nbsp;<a href="http://localhost/git_test073/index.php/pro/news_sql?id={ID}&act=del&cid=<?php echo $_GET['cid'] ?>&pid=<?php echo $_GET['pid'] ?>" onclick="return confirm('是否确定');" >Del</a></td>
-            </tr>
-          </table>
+            <?php require_once('inc/inc_newsList_table.php'); ?>
+         
         </div>
         <div class="form-inline mbl"> 
           <script type="text/javascript">
-				var dsCateByPID = new Spry.Data.HTMLDataSet("data_category.php?pid=<?php echo $_GET['pid']; ?>", "category_news");
+		var dsCateByPID = new Spry.Data.HTMLDataSet("data_category.php?pid=<?php echo $_GET['pid']; ?>", "category_news");
 			</script>
           <div class="form-group" spry:region="dsCateByPID">
             <select spry:repeatchildren="dsCateByPID" class="form-control" name="moveCID">

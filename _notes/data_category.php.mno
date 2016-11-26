@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<info>
-	<infoitem key="UD_Recordset1" value="name:ID;datatype:int,name:category;datatype:string,name:main;datatype:int,name:date;datatype:datetime,name:temp;datatype:blob,name:parentId;datatype:int,name:image;datatype:string,name:isUploadedImage;datatype:int,name:type;datatype:string,name:sortNum;datatype:int,name:password;datatype:string,name:content;datatype:blob,name:display;datatype:int,name:linkURL;datatype:string,name:linkType;datatype:string,name:template;datatype:string,name:detailsTemplate;datatype:string,name:program;datatype:string,name:adminLinkURL;datatype:string,name:defaulttemplate;datatype:string,name:toFirstSub;datatype:int,name:userAccess;datatype:int,name:pageSize;datatype:int,name:indexPageSize;datatype:int,name:formId;datatype:int,name:sidecate;datatype:string" />
-</info>

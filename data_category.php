@@ -84,7 +84,7 @@ if ($colname_Recordset1=="") {
             <td><?php echo $row_Recordset1['main']; ?></td>
             <td><?php echo $row_Recordset1['date']; ?></td>
             <td><?php echo $row_Recordset1['temp']; ?></td>
-            <td><?php echo $row_Recordset1['parentId']; ?></td>
+            <td><?php echo $row_Recordset1['parentID']; ?></td>
             <td><?php echo $row_Recordset1['image']; ?></td>
             <td><?php echo $row_Recordset1['isUploadedImage']; ?></td>
             <td><?php echo $row_Recordset1['type']; ?></td>
