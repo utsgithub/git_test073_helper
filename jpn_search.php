@@ -105,6 +105,7 @@ $totalRows_rsWord = mysql_num_rows($rsWord);
             <input type="text" name="word" />
             <input type="submit" />
         </form>
+        <a href="newsEdit2.php?ID=<?php echo trim($_GET['id'])?>" target="_blank">Edit</a>
         <table class="table table-bordered mtl">
             <tr>
                 <td>id</td>
@@ -114,6 +115,7 @@ $totalRows_rsWord = mysql_num_rows($rsWord);
                 <td>ne3ID</td>
                 <td>cid</td>
                 <td>total</td>
+                
             </tr>
             <?php do {
                       $word_id=$row_rsWord['id'];
@@ -132,6 +134,7 @@ $totalRows_rsWord = mysql_num_rows($rsWord);
                     <td><?php echo $row_rsWord['ne3ID']; ?></td>
                     <td><?php echo $row_rsWord['cid']; ?></td>
                     <td><?php echo $row_rsWord['total']; ?></td>
+                    
                 </tr>
                 <?php } while ($row_rsWord = mysql_fetch_assoc($rsWord)); ?>
         </table>
@@ -145,6 +148,7 @@ $totalRows_rsWord = mysql_num_rows($rsWord);
                 <td>chi</td>
                 <td class="none">cid</td>
                 <td>audio</td>
+                <td></td>
             </tr>
             <?php do {
                       $audio="";
@@ -181,6 +185,10 @@ $totalRows_rsWord = mysql_num_rows($rsWord);
             <a href="audioJPN/<?php echo $row_rs['audio']; ?>" target="_blank">
                 <?php echo $row_rs['audio']; ?>
             </a>
+        </td>
+        <td>
+
+            <a target="_blank" href="newsEdit2.php?ID=<?php echo trim($_GET['id'])?>&sen=<?php echo strlen($row_rs['eng']); ?>&sen_cn=<?php echo $row_rs['chi']; ?>&audio=<?php echo $row_rs['audio']; ?>">Choose</a>
         </td>
     </tr>
             <?php } while ($row_rs = mysql_fetch_assoc($rs)); ?>

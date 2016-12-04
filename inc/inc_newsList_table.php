@@ -19,7 +19,7 @@
             <a target="_blank" href="<?php $linkNewsEdit ?>">{subTitle}</a>
         </td>
         <td>
-            <a target="_blank" href="jpn_search.php?word={hint}&audio={audio}">{hint}</a>
+            <a target="_blank" href="jpn_search.php?word={hint}&audio={audio}&id={ds1::ID}">{hint}</a>
         </td>
         <td>{sen}</td>
         <td>{sen_cn}</td>
