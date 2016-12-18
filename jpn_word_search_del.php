@@ -31,9 +31,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$colname_Recordset1 = "-1";
+if (isset($_GET['jpn'])) {
+  $colname_Recordset1 = $_GET['jpn'];
+}
 mysql_select_db($database_conn, $conn);
-//category='d' and 
-$query_Recordset1 = "SELECT * FROM jpn_splitter where len = 95 and isNull(new_eng) order by id desc";
+$query_Recordset1 = sprintf("SELECT * FROM jpn_words WHERE jpn LIKE %s", GetSQLValueString("%" . $colname_Recordset1 . "%", "text"));
 $Recordset1 = mysql_query($query_Recordset1, $conn) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
@@ -56,33 +59,29 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 <!-- inc_nav -->
 <?php include("inc/inc_nav.php"); ?>
 <div class="container"><!-- InstanceBeginEditable name="EditRegion1" -->
-<table class="table table-bordered table-hover">
+<table class="table table-bordered">
     <tr>
-        <td>ID</td>
-        <td>chi</td>
+        <td>id</td>
+        <td>jpn</td>
         <td>eng</td>
-        <td>sen_eng</td>
-        <td>sen_chi</td>
-        <td>audio</td>
-        <td>len</td>
-        <td>new_eng</td>
-        <td>new_chi</td>
-        <td>new_audio</td>
+        <td>chi</td>
+        <td>ne3ID</td>
+        <td>cid</td>
+        <td>total</td>
+        <td>status</td>
     </tr>
     <?php do { ?>
-    <tr>
-        <td><?php echo $row_Recordset1['ID']; ?></td>
-        <td><?php echo $row_Recordset1['chi']; ?></td>
-        <td><a href="jpn_splitter_edit.php?ID=<?php echo $row_Recordset1['ID']; ?>"><?php echo $row_Recordset1['eng']; ?></a></td>
-        <td><?php echo $row_Recordset1['sen_eng']; ?></td>
-        <td><?php echo $row_Recordset1['sen_chi']; ?></td>
-        <td><?php echo $row_Recordset1['audio']; ?></td>
-        <td><?php echo $row_Recordset1['len']; ?></td>
-        <td><?php echo $row_Recordset1['new_eng']; ?></td>
-        <td><?php echo $row_Recordset1['new_chi']; ?></td>
-        <td><?php echo $row_Recordset1['new_audio']; ?></td>
-    </tr>
-    <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+        <tr>
+            <td><?php echo $row_Recordset1['id']; ?></td>
+            <td><?php echo $row_Recordset1['jpn']; ?></td>
+            <td><?php echo $row_Recordset1['eng']; ?></td>
+            <td><?php echo $row_Recordset1['chi']; ?></td>
+            <td><?php echo $row_Recordset1['ne3ID']; ?></td>
+            <td><?php echo $row_Recordset1['cid']; ?></td>
+            <td><?php echo $row_Recordset1['total']; ?></td>
+            <td><?php echo $row_Recordset1['status']; ?></td>
+        </tr>
+        <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
 </table>
 <!-- InstanceEndEditable --> </div>
 <!-- Include all compiled plugins (below), or include individual files as needed --> 

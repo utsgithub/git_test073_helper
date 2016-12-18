@@ -14,9 +14,9 @@
             <input type="checkbox" name="arr[]" value="{ds1::ID}" />
         </td>
         <td>{subject}</td>
-        <?php $linkNewsEdit="newsEdit.php?id={ds1::ID}&cid={categoryId}&pid=$pid"?>
+        <?php $linkNewsEdit="newsEdit2.php?id={ds1::ID}&cid={categoryId}&pid=$pid"?>
         <td>
-            <a target="_blank" href="<?php $linkNewsEdit ?>">{subTitle}</a>
+            <a target="_blank" href="newsEdit2.php?ID={ds1::ID}">{subTitle}</a>
         </td>
         <td>
             <a target="_blank" href="jpn_search.php?word={hint}&audio={audio}&id={ds1::ID}">{hint}</a>

@@ -1,36 +1,5 @@
 <?php require_once('Connections/conn.php'); ?>
 <?php
-if (!function_exists("GetSQLValueString")) {
-    function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-    {
-        if (PHP_VERSION < 6) {
-            $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-        }
-
-        $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-        switch ($theType) {
-            case "text":
-                $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                break;
-            case "long":
-            case "int":
-                $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-                break;
-            case "double":
-                $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-                break;
-            case "date":
-                $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                break;
-            case "defined":
-                $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-                break;
-        }
-        return $theValue;
-    }
-}
-
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
     $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
@@ -54,7 +23,12 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 
     mysql_select_db($database_conn, $conn);
     $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
+
+    $insertGoTo = "newsEdit2.php?ID=".$_POST['ID'];
+    header(sprintf("Location: %s", $insertGoTo));
 }
+
+
 
 $colname_rs = "-1";
 if (isset($_GET['ID'])) {
@@ -90,17 +64,17 @@ $totalRows_rs = mysql_num_rows($rs);
             <table align="center" class="table table-bordered">
                 <?php
                 $colname_sen = $row_rs['sen'];
-                if (isset($_GET['ID'])) {
+                if (isset($_GET['sen'])) {
                     $colname_sen = $_GET['sen'];
                 }
 
                 $colname_sen_cn = $row_rs['sen_cn'];
-                if (isset($_GET['ID'])) {
+                if (isset($_GET['sen_cn'])) {
                     $colname_sen_cn = $_GET['sen_cn'];
                 }
 
                 $colname_audio = $row_rs['audio'];
-                if (isset($_GET['ID'])) {
+                if (isset($_GET['audio'])) {
                     $colname_audio = $_GET['audio'];
                 }
 
@@ -136,9 +110,17 @@ $totalRows_rs = mysql_num_rows($rs);
                     </td>
                 </tr>
                 <tr valign="baseline" class="">
-                    <td nowrap align="right">Audio:</td>
+                    <td nowrap align="right">
+                        Audio:
+                    </td>
                     <td>
                         <input type="text" class="form-control" name="audio" value="<?php echo $colname_audio; ?>" size="32" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <audio src="audioJPN/<?php echo $colname_audio; ?>" controls></audio>
                     </td>
                 </tr>
                 <tr valign="baseline" class="none">
@@ -180,9 +162,6 @@ $totalRows_rs = mysql_num_rows($rs);
                         <input type="text" class="form-control" name="image" value="<?php echo htmlentities($row_rs['image'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
                     </td>
                 </tr>
-
-
-
                 <tr valign="baseline" class="none">
                     <td nowrap align="right">Sort:</td>
                     <td>
@@ -199,6 +178,8 @@ $totalRows_rs = mysql_num_rows($rs);
             <input type="hidden" name="MM_update" value="form1" />
             <input type="hidden" name="ID" value="<?php echo $row_rs['ID']; ?>" />
         </form>
+        <a class="btn btn-primary" href="jpn_sen_insert.php?sen=<?php echo $colname_sen;?>&sen_cn=<?php echo $colname_sen_cn;?>&audio=<?php echo $colname_audio;?>" target="_blank">Insert New Sentence</a>
+        <a class="btn btn-primary" target="_blank" href="https://translate.google.com/#auto/zh-CN/<?php echo $colname_sen; ?>">Google Translate</a>
         <p>&nbsp;</p>
         <!-- InstanceEndEditable -->
     </div>

@@ -1,38 +1,7 @@
 <?php require_once('Connections/conn.php'); ?>
 <?php
-if (!function_exists("GetSQLValueString")) {
-    function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
-    {
-        if (PHP_VERSION < 6) {
-            $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-        }
-
-        $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-        switch ($theType) {
-            case "text":
-                $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                break;
-            case "long":
-            case "int":
-                $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-                break;
-            case "double":
-                $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-                break;
-            case "date":
-                $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-                break;
-            case "defined":
-                $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-                break;
-        }
-        return $theValue;
-    }
-}
-
 mysql_select_db($database_conn, $conn);
-$query_Recordset1 = "SELECT * FROM jpn_sen";
+$query_Recordset1 = "SELECT * FROM jpn_sen order by id desc";
 $Recordset1 = mysql_query($query_Recordset1, $conn) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
@@ -66,6 +35,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                 <td>chi</td>
                 <td>cid</td>
                 <td>audio</td>
+                <td></td>
                 <td>len</td>
             </tr>
             <?php do { ?>
@@ -74,7 +44,8 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                 <td><?php echo $row_Recordset1['category']; ?></td>
                 <td><?php echo $row_Recordset1['sum']; ?></td>-->
                 <td>
-                    <?php echo $row_Recordset1['eng']; ?>
+                    <a href="jpn_search_edit.php?id=<?php echo $row_Recordset1['id']; ?>" target="_blank">
+                    <?php echo $row_Recordset1['eng']; ?></a>
                 </td>
                 <td>
                     <?php echo $row_Recordset1['chi']; ?>
@@ -84,6 +55,18 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                 </td>
                 <td>
                     <?php echo $row_Recordset1['audio']; ?>
+                </td>
+                <td>
+                <a href="jpn_sen_ori_audio.php?ori_audio=<?php echo $row_Recordset1['ori_audio']; ?>" target="_blank"><?php echo $row_Recordset1['ori_audio'];?></a>
+                    <?php
+				//substr($row_Recordset1['audio'], 0, 13) ;
+				if($row_Recordset1['ori_audio']==""){
+                    $updateSQL = "UPDATE jpn_sen SET ori_audio='".substr($row_Recordset1['audio'], 0 , -6)."' WHERE id=".$row_Recordset1['id'];
+                          mysql_select_db($database_conn, $conn);
+                          $Result = mysql_query($updateSQL, $conn) or die(mysql_error());
+                      }
+                    ?>
+                
                 </td>
                 <td>
                     <?php echo $row_Recordset1['len']; ?>

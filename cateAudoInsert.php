@@ -2,7 +2,7 @@
 <?php include("inc/inc_head.php"); ?>
 
 <?php
-for ($x = 1; $x <= 25; $x++) {
+for ($x = 1; $x <= 26; $x++) {
     $insertSQL= "INSERT INTO news_category (category, parentID, sortNum) VALUES ('".$title." - ".$x."', '".$pid."', '".$x."')";
     echo $insertSQL."<br/>";
     mysql_select_db($database_conn, $conn);
