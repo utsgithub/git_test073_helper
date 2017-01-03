@@ -39,6 +39,6 @@
   <input type="hidden" name="id" value=""/>
   <input type="hidden" name="act" value="copy"/>
   <a class="btn btn-success" href="cateInsert.php?pid=<?php echo $pid; ?>">Add New</a>
-  <a class="btn btn-success" target="_blank" href="cateAudoInsert.php?pid=<?php echo $pid; ?>&title=<?php echo $title; ?>">Auto Insert</a>
+  <a class="btn btn-success" target="_blank" href="cateAutoInsert.php?pid=<?php echo $pid; ?>&title=<?php echo $title; ?>">Auto Insert</a>
   <a class="btn btn-success" target="_blank" href="cateAutoNum.php?pid=<?php echo $pid; ?>&title=<?php echo $title; ?>">Auto Num</a>
 </form>

@@ -43,7 +43,7 @@
     <Compile Include="assets\bootstrap\js\bootstrap.min.js" />
     <Compile Include="assets\jquery.min.js" />
     <Compile Include="assets\oocss.css" />
-    <Compile Include="cateAudoInsert.php" />
+    <Compile Include="cateAutoInsert.php" />
     <Compile Include="cateAutoNum.php" />
     <Compile Include="cateInsert.php" />
     <Compile Include="Connections\conn.php" />
@@ -54,6 +54,13 @@
     <Compile Include="jpn_audio_time.php" />
     <Compile Include="jpn_search.php" />
     <Compile Include="jpn_search_edit.php" />
+    <Compile Include="jpn_sen_audio_cate.php" />
+    <Compile Include="jpn_sen_audio_edit.php" />
+    <Compile Include="jpn_sen_audio_insert.php" />
+    <Compile Include="jpn_sen_audio_list.php" />
+    <Compile Include="jpn_sen_audio_mp3Maker.php" />
+    <Compile Include="jpn_sen_audio_mp3txt.php" />
+    <Compile Include="jpn_sen_distinct.php" />
     <Compile Include="jpn_sen_insert.php" />
     <Compile Include="jpn_sen_list.php" />
     <Compile Include="jpn_sen_ori_audio.php" />
@@ -61,10 +68,15 @@
     <Compile Include="jpn_splitter_count.php" />
     <Compile Include="jpn_splitter_edit.php" />
     <Compile Include="jpn_splitter_list.php" />
+    <Compile Include="jpn_word_batch.php" />
     <Compile Include="jpn_word_edit.php" />
+    <Compile Include="jpn_word_insert.php" />
     <Compile Include="jpn_word_list.php" />
+    <Compile Include="jpn_word_reset.php" />
     <Compile Include="jpn_word_search.php" />
+    <Compile Include="jpn_word_search_del.php" />
     <Compile Include="json.php" />
+    <Compile Include="newsDel.php" />
     <Compile Include="newsEdit2.php" />
     <Compile Include="SpryAssets\SpryData.js" />
     <Compile Include="SpryAssets\SpryData1.js" />
@@ -91,7 +103,6 @@
     <Compile Include="newsEdit.php" />
     <Compile Include="NewsImportQuestion.php" />
     <Compile Include="newsList.php" />
-    <Compile Include="template.asp" />
     <Compile Include="template.php" />
     <Compile Include="Untitled-1.php" />
     <Compile Include="Untitled-4.js" />
