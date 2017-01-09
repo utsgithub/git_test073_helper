@@ -52,6 +52,7 @@
     <Compile Include="inc\inc_nav.php" />
     <Compile Include="inc\inc_newsList_table.php" />
     <Compile Include="jpn_audio_time.php" />
+    <Compile Include="jpn_mp3_helper.php" />
     <Compile Include="jpn_search.php" />
     <Compile Include="jpn_search_edit.php" />
     <Compile Include="jpn_sen_audio_cate.php" />
@@ -76,6 +77,7 @@
     <Compile Include="jpn_word_search.php" />
     <Compile Include="jpn_word_search_del.php" />
     <Compile Include="json.php" />
+    <Compile Include="mp3file.php" />
     <Compile Include="newsDel.php" />
     <Compile Include="newsEdit2.php" />
     <Compile Include="SpryAssets\SpryData.js" />

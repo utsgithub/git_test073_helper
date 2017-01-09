@@ -1,5 +1,5 @@
-<?php require_once('Connections/conn.php'); ?>
-<?php
+<?php 
+require_once('Connections/conn.php'); 
 $getCid = "-1";
 if (isset($_GET['cid'])) {
     $getCid = $_GET['cid'];
@@ -18,7 +18,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Bootstrap Template</title>
+    <title>JPN Sen Audio List</title>
     <!-- InstanceEndEditable -->
     <!-- inc_head -->
     <?php include("inc/inc_head.php"); ?>
@@ -30,8 +30,10 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     <?php include("inc/inc_nav.php"); ?>
     <div class="container">
         <!-- InstanceBeginEditable name="EditRegion1" -->
-        <a href="jpn_sen_audio_mp3Maker.php?category=<?php echo $getCid ?>" target="_blank">MP3 Maker</a>
-        <table class="table table-bordered">
+        <a href="jpn_sen_audio_mp3Maker.php?category=<?php echo $getCid ?>" target="_blank" class="btn btn-primary">MP3 Maker</a>
+        <a href="jpn_sen_audio_list.php?cid=<?php echo $getCid-1 ?>" class="btn btn-primary">Pre Cate</a>
+        <a href="jpn_sen_audio_list.php?cid=<?php echo $getCid+1 ?>" class="btn btn-primary">Next Cate</a>
+        <table class="table table-bordered mtm">
             <tr>
                 <td>ID</td>
                 <?php /*?><td>cid</td>
@@ -51,7 +53,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                       <td><?php echo $row_Recordset1['category']; ?></td>
                       <td><?php echo $row_Recordset1['sum']; ?></td><?php */?>
                 <td>
-                    <a href="jpn_sen_audio_edit.php?ID=<?php echo $row_Recordset1['ID']; ?>" target="_blank">
+                    <a href="jpn_sen_audio_edit.php?ID=<?php echo $row_Recordset1['ID']; ?>">
                         <?php echo $row_Recordset1['eng']; ?>
                     </a>
                 </td>

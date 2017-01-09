@@ -33,7 +33,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
         <textarea>
             <?php
         do {
-            for ($x = 1; $x <= 10; $x++) {
+            for ($x = 1; $x <= 11; $x++) {
                 echo $row_Recordset1['ID'];
                 echo "\n";
             }

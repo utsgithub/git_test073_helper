@@ -16,10 +16,7 @@
                         <li><a href="jpn_word_list.php" target="_blank">JPN Word</a></li>
                         <li><a href="jpn_sen_list.php" target="_blank">JPN Sen</a></li>
                         <li><a href="jpn_search.php" target="_blank">JPN Search</a></li>
-                        <li><a href="http://localhost/output/test/index.html" target="_blank">Test</a></li>
-                        <li> <a href="http://getbootstrap.com/css" target="_blank">CSS</a> </li>
-                        <li> <a href="http://getbootstrap.com/components" target="_blank">Components</a> </li>
-                        <li> <a href="http://getbootstrap.com/javascript" target="_blank">JavaScript</a> </li>
+                        <li><a href="jpn_sen_audio_cate.php">Sen Audio</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Link</a></li>

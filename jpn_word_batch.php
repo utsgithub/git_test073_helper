@@ -4,14 +4,14 @@ $updateSQL = "UPDATE jpn_words SET ne3ID=null , total=null";
 mysql_select_db($database_conn, $conn);
 $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 
-$query_sql="SELECT * FROM jpn_sen WHERE eng LIKE %s and sum < 13 and category>=37 and category <= 48 order by len asc";
+$query_sql="SELECT * FROM jpn_sen WHERE eng LIKE %s and sum < 13 and category>=1 and category <= 24 order by len asc";
 $colname_action = "-1";
 if (isset($_GET['action'])) {
     $colname_action = trim($_GET['action']);
 }
 mysql_select_db($database_conn, $conn);
 $query_Recordset1 = "SELECT * FROM jpn_words where word_type<>'专有词'
-and word_type<>'连接词' and word_type<>'感叹词' and word_type<>'代词' and cate > 37";
+and word_type<>'连接词' and word_type<>'感叹词' and word_type<>'代词' and cate > 3";
 $Recordset1 = mysql_query($query_Recordset1, $conn) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);

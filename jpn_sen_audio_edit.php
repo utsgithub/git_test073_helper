@@ -4,7 +4,6 @@ $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
     $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
-
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
     $updateSQL = sprintf("UPDATE jpn_sen_audio SET cid=%s, category=%s, `sum`=%s, eng=%s, eng1=%s, chn=%s, audio=%s, status=%s WHERE ID=%s",
                          GetSQLValueString($_POST['cid'], "int"),
@@ -16,11 +15,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                          GetSQLValueString($_POST['audio'], "text"),
                          GetSQLValueString($_POST['status'], "text"),
                          GetSQLValueString($_POST['ID'], "int"));
-
     mysql_select_db($database_conn, $conn);
     $Result1 = mysql_query($updateSQL, $conn) or die(mysql_error());
 }
-
 $colname_Recordset1 = "-1";
 if (isset($_GET['ID'])) {
     $colname_Recordset1 = $_GET['ID'];
@@ -30,6 +27,11 @@ $query_Recordset1 = sprintf("SELECT * FROM jpn_sen_audio WHERE ID = %s", GetSQLV
 $Recordset1 = mysql_query($query_Recordset1, $conn) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysql_num_rows($Recordset1);
+$int_sum=(int)$row_Recordset1['sum'];
+if($int_sum>12){
+    $nextCate=(int)$row_Recordset1['category']+1;
+    header ("Location: jpn_sen_audio_list.php?cid=".$nextCate);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +41,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Bootstrap Template</title>
+    <title><?php echo $row_Recordset1['eng']?></title>
     <!-- InstanceEndEditable -->
     <!-- inc_head -->
     <?php include("inc/inc_head.php"); ?>
@@ -53,7 +55,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
         <!-- InstanceBeginEditable name="EditRegion1" -->
         <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
             <table align="center" class="table table-bordered">
-                <tr valign="baseline">
+                <tr valign="baseline" class="none">
                     <td nowrap align="right">ID:</td>
                     <td>
                         <?php echo $row_Recordset1['ID']; ?>
@@ -62,31 +64,31 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                 <tr valign="baseline">
                     <td nowrap align="right">Cid:</td>
                     <td>
-                        <input type="text" class="form-control" name="cid" value="<?php echo htmlentities($row_Recordset1['cid'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="cid" value="<?php echo $row_Recordset1['cid']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Category:</td>
                     <td>
-                        <input type="text" class="form-control" name="category" value="<?php echo htmlentities($row_Recordset1['category'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="category" value="<?php echo $row_Recordset1['category']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Sum:</td>
                     <td>
-                        <input type="text" class="form-control" name="sum" value="<?php echo htmlentities($row_Recordset1['sum'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="sum" value="<?php echo $row_Recordset1['sum']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Eng:</td>
                     <td>
-                        <input type="text" class="form-control" name="eng" value="<?php echo htmlentities($row_Recordset1['eng'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="eng" value="<?php echo $row_Recordset1['eng']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Eng1:</td>
                     <td>
-                        <input type="text" class="form-control" name="eng1" value="<?php echo htmlentities($row_Recordset1['eng1'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="eng1" value="<?php echo $row_Recordset1['eng1']?>" size="32" />
                         <div>
                             <audio src="audioJPN2/<?php echo $row_Recordset1['audio']; ?>" controls></audio>
                         </div>
@@ -98,20 +100,20 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                 <tr valign="baseline">
                     <td nowrap align="right">Chn:</td>
                     <td>
-                        <input type="text" class="form-control" name="chn" value="<?php echo htmlentities($row_Recordset1['chn'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="chn" value="<?php echo $row_Recordset1['chn']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Audio:</td>
                     <td>
-                        <input type="text" class="form-control" name="audio" value="<?php echo htmlentities($row_Recordset1['audio'], ENT_COMPAT, 'utf-8'); ?>" size="32" />
+                        <input type="text" class="form-control" name="audio" value="<?php echo $row_Recordset1['audio']?>" size="32" />
                     </td>
                 </tr>
                 <tr valign="baseline">
                     <td nowrap align="right">Status:</td>
                     <td>
                         <select name="status" class="form-control">
-                            <option value="<?php echo $row_Recordset1['status'];?>">
+                            <option value="<?php echo $row_Recordset1['status']?>">
                                 <?php echo $row_Recordset1['status'];?>
                             </option>
                             <option value="success">
@@ -129,6 +131,9 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                             <option value="primary">
                                 Primary
                             </option>
+                            <option value="">
+                                Null
+                            </option>
                         </select>
                     </td>
                 </tr>
@@ -138,12 +143,13 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
                         <input type="submit" value="更新记录" class="btn btn-primary" />
                         <a class="btn btn-warning" href="?ID=<?php echo $row_Recordset1['ID']-1; ?>">Pre</a>
                         <a class="btn btn-warning" href="?ID=<?php echo $row_Recordset1['ID']+1; ?>">Next</a>
-                        <a class="btn btn-danger" href="jpn_sen_audio_insert.php?ID=<?php echo $row_Recordset1['ID']; ?>" target="_blank">Split</a>
+                        <a class="btn btn-danger" href="jpn_sen_audio_insert.php?ID=<?php echo $row_Recordset1['ID']; ?>">Split</a>
+                        <a class="btn btn-info" href="jpn_sen_audio_list.php?cid=<?php echo $row_Recordset1['category']?>">Back</a>
                     </td>
                 </tr>
             </table>
             <input type="hidden" name="MM_update" value="form1" />
-            <input type="hidden" name="ID" value="<?php echo $row_Recordset1['ID']; ?>" />
+            <input type="hidden" name="ID" value="<?php echo $row_Recordset1['ID'] ?>" />
         </form>
         <p>&nbsp;</p>
         <!-- InstanceEndEditable -->
